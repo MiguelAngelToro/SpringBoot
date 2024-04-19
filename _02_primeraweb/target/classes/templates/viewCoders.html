@@ -43,13 +43,22 @@
             <td th:text="${coder.clan}"></td>
             <td>
               <div class="d-flex gap-2">
-                <a href="#" class="btn btn-primary">Editar</a>
-                <a href="#" class="btn btn-danger">Eliminar</a>
+                <a th:href="@{/update/{id}(id=${coder.id})}" class="btn btn-primary">Editar</a>
+                <a th:href="@{/delete/{id}(id=${coder.id})}" class="btn btn-danger">Eliminar</a>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <!--PAGINACIÓN-->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" th:classappend="${currentPage == 1} ?'disabled':''"><a class="page-link" th:href="@{|/?page=${currentPage-1}|}">Previous</a></li>
+          <li class="page-item" th:each="i:${#numbers.sequence(1, totalPage)}" th:classappend="${i == currentPage} ? 'active':''"><a class="page-link" th:href="@{|/?page=${i}|}" th:text="${i}">1</a></li> 
+          <li class="page-item" th:classappend="${currentPage == totalPage} ?'disabled':''"><a class="page-link" th:href="@{|/?page=${currentPage+1}|}">Next</a></li>
+        </ul>
+      </nav>
     </div>
   </body>
 </html>
