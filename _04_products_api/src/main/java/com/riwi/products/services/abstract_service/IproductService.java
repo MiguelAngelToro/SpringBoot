@@ -9,7 +9,7 @@ public interface IproductService {
     public Product save(Product objProduct);
     public List<Product> getAll();
     public Product getById(Long id);
-    public boolean delete(Long id);
-    public boolean update(Product objProduct);
+    public void delete(Long id);
+    public Product update(Product objProduct);
 
 }
